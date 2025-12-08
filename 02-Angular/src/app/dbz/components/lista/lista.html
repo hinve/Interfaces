@@ -18,7 +18,7 @@
                                 <span><strong>Nombre:</strong> {{ personaje.nombre }}</span> - <span><strong>Fuerza:</strong> {{ personaje.fuerza }} </span>
                             </div>
                                 <span>Indice: {{ i }} - Es par: {{ esPar }} - Es el ultimo: {{ esUltimo }}</span>
-                            <button class="btn" (click)="borrarPersonaje(i)">❌</button>    
+                            <button class="btn" (click)="borrarPersonaje(personaje.id)">❌</button>    
                         </li>
                 }
             </li>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Personaje } from '../../interfaces/personaje.interface';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-lista',
@@ -11,14 +12,14 @@ export class Lista {
 
   @Input()
   public listaPersonajes: Personaje[] = [
-    { nombre: 'Yamcha', fuerza: 100 },
-    { nombre: 'Krillin', fuerza: 80 }
+    { nombre: 'Yamcha', fuerza: 100, id: uuid() },
+    { nombre: 'Krillin', fuerza: 80, id: uuid() },
   ];
 
   @Output()
-  public onDeletePersonaje: EventEmitter<number> = new EventEmitter();
+  public onDeletePersonajeById: EventEmitter<string> = new EventEmitter();
 
-  borrarPersonaje(index: number) {
-    this.onDeletePersonaje.emit(index);
+  borrarPersonaje(id: string) {
+    this.onDeletePersonajeById.emit(id);
   }
 }

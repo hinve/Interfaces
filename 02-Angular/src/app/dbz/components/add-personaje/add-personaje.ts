@@ -12,7 +12,7 @@ export class AddPersonaje {
   @Output()
   public onNewPersonaje: EventEmitter<Personaje> = new EventEmitter();
 
-  public personaje: Personaje = { nombre: '', fuerza: 0 };
+  public personaje: Personaje = { nombre: '', fuerza: 0, id: '' };
 
   agregarPersonaje() {
     if(this.personaje.nombre.length === 0) {
@@ -20,6 +20,6 @@ export class AddPersonaje {
     } else {
       this.onNewPersonaje.emit(this.personaje);
     }
-    this.personaje = { nombre: '', fuerza: 0 };
+    this.personaje = { nombre: '', fuerza: 0, id: '' };
   }
 }

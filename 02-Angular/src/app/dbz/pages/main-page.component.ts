@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Lista } from '../components/lista/lista';
-import { AddPersonaje } from "../components/add-personaje/add-personaje";
-import { Personaje } from '../interfaces/personaje.interface';
+import { Component } from '@angular/core';
 import { DBZService } from '../sevices/dbz-service';
 
 @Component({

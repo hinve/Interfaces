@@ -21,8 +21,9 @@ export class DBZService {
         this.personajes.push(newPersonaje);
     }
 
-    public borrarPersonaje(index: number) {
-        const heroe = this.personajes.splice(index, 1);
+    public borrarPersonaje(id: string) {
+        const heroe = this.personajes.find(p => p.id === id);
+        this.personajes = this.personajes.filter(p => p.id !== id);
 
         console.log(heroe);
     }
