@@ -1,19 +1,15 @@
 <div class="row">
 
-    <!-- Pantallas medianas casa columna ocupa 3/12 -->
-    <!-- Pantallas pequenas casa columna ocupa 6/12 -->
-    <div class="col-md-3 col-sm-6">
-
-        <!-- card, para hacer "tarjetas" -->
-        <!-- margin-botton 2 -->
-        <!-- bg dark -->
-        <div class="card mb-2 text-center bg-dark">
-            <!-- TODO: crear imagen -->
-            <div class="card-body">
-                <p class="card-text text-white">
-                    Hola Mundo
-                </p>
+    @for (gif of listadoGifs; track gif.id) {
+        <div class="col-md-3 col-sm-6">
+            <div class="card mb-2 text-center bg-dark">
+                <img class="card-img-top" [src]="gif.images.downsized_medium.url" [alt]="gif.title">
+                <div class="card-body">
+                    <p class="card-text text-white">
+                        {{ gif.title }}
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    }
 </div>

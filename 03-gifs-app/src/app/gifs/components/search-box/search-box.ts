@@ -16,9 +16,15 @@ export class SearchBoxComponent {
 
   }
 
+  toTitleCase(word:string):string {
+    return word.substring(0,1).toUpperCase() + 
+           word.substring(1).toLowerCase();
+  }
+
   buscarEtiqueta() {
-    const nuevaEtiqueta = this.inputEtiqueta.nativeElement.value;
+    const nuevaEtiqueta = this.toTitleCase(this.inputEtiqueta.nativeElement.value);
     this.gifsService.buscarEtiqueta( nuevaEtiqueta );
     this.inputEtiqueta.nativeElement.value = "";
   }
+
 }
