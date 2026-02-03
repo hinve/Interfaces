@@ -48,5 +48,29 @@ export class GifsService {
           this.listadoGifs = resp.data;
         } );
     }
+
+    this.almacenarLocalStorage();
+  }
+
+  private almacenarLocalStorage(): void {
+    localStorage.setItem('historial', JSON.stringify(this._historialEtiquetas));
+  }
+
+  private cargarLocalStorage(): void {
+    const temporal = localStorage.getItem('historial');
+    if(temporal) {
+      this._historialEtiquetas = JSON.parse(temporal);
+    }
+  }
+
+  
+  constructor() {
+    this.cargarLocalStorage();
+    const ultimo = localStorage.getItem('historial');
+    if (ultimo) {
+      this.buscarEtiqueta(JSON.parse(ultimo)[0]);
+    } else {
+      this.buscarEtiqueta('dragon');
+    }
   }
 }
