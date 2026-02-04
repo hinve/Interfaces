@@ -1,0 +1,13 @@
+<h1>{{ nombre }}</h1>
+<dl>
+    <td>Nombre: {{ nombre }}</td>
+    <dd></dd>
+    <td>Edad: {{ edad }}</td>
+    <dd></dd>
+    <td>Metodo: {{ nombreYEdad }}</td>
+    <dd></dd>
+    <td>Capitalizado: {{ nombre }}</td>
+</dl>
+<button class="btn btn-primary" (click)="cambiarNombre()">Cambiar nombre</button>
+<button class="btn btn-primary" (click)="cambiarEdad()">Cambiar edad</button>
+<button class="btn btn-primary" (click)="restablecer()">Restablecer valores</button>

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
                 <button type="reset" (click)="reset()">reset</button>
                 <p>Numero: {{ contador }}</p>
                 <input #numInput type="number" name="x" id="x"> <button type="button" (click)="sendNumber(numInput.value)">Mandar</button>`,
-    standalone: true
+    standalone: false
 })
 
 export class ContadorComponent {

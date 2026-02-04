@@ -1,0 +1,9 @@
+<h2>Lista de heroes</h2>
+<button class="btn btn-danger" (click)="borrarUltimoHeroe()">Borrar ultimo heroe</button>
+
+<h2>{{ mensajeEliminados }}</h2>
+<div class="lista-heroes">
+    @for (heroe of heroes; track heroe.nombre) {
+        <p>{{ heroe.nombre }}</p>
+    }
+</div>

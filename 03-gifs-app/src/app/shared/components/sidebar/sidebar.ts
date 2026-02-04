@@ -1,0 +1,22 @@
+import { Component } from '@angular/core';
+import { GifsService } from '../../../gifs/services/gifs';
+
+@Component({
+  selector: 'shared-sidebar',
+  templateUrl: './sidebar.html',
+  styleUrl: './sidebar.css',
+  standalone: false
+})
+export class SidebarComponent {
+
+  constructor( private gifsService: GifsService ) {}
+
+  
+  get tags(): string[] {
+    return this.gifsService.historialEtiquetas;
+  }
+  
+  buscarEtiqueta( etiqueta: string ) {
+    this.gifsService.buscarEtiqueta( etiqueta );
+  }
+}
