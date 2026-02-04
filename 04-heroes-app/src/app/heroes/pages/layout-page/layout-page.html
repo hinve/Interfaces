@@ -1,3 +1,52 @@
-<h1>Hero Layout</h1>
-<router-outlet></router-outlet>
-<h5>Footer</h5>
+<mat-sidenav-container fullscreen>
+    
+    <mat-sidenav #sidenav #drawer mode="push" [ngStyle]="{ width: '250px' }">
+        <mat-toolbar class="toolbar-warn">
+            <span>Menu</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+<!-- BOTONES SIDENAV -->
+
+        <mat-nav-list>
+            <mat-list-item routerLink="{{ sidebarItems[0].url }}" (click)="drawer.close()">
+                <mat-icon matListItemIcon>{{sidebarItems[0].icon}}</mat-icon>
+                {{sidebarItems[0].label}}
+            </mat-list-item>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <mat-list-item routerLink="{{ sidebarItems[1].url }}" (click)="drawer.close()">
+                <mat-icon matListItemIcon>{{sidebarItems[1].icon}}</mat-icon>
+                {{sidebarItems[1].label}}
+            </mat-list-item>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <mat-list-item routerLink="{{ sidebarItems[2].url }}" (click)="drawer.close()">
+                <mat-icon matListItemIcon>{{sidebarItems[2].icon}}</mat-icon>
+                {{sidebarItems[2].label}}
+            </mat-list-item>
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar color="primary" class="toolbar-primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon class="colorIcono">menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button mat-button>
+            <mat-icon>close</mat-icon>
+            Logout
+        </button>
+    </mat-toolbar>
+
+    <div class="container p-2">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>

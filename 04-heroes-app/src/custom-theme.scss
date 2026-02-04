@@ -33,3 +33,22 @@ body {
   // Reset the user agent margin.
   margin: 0;
 }
+
+.toolbar-primary {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary),
+    container-text-color: var(--mat-sys-on-primary),
+  ));
+}
+
+
+.toolbar-warn {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-error),
+    container-text-color: var(--mat-sys-on-error),
+  ));
+}
+
+.colorIcono {
+  color: white
+}

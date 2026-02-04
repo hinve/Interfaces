@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  @if (institutos.length > 0) {
+    <div>
+      <app-instituto 
+        [nombre]="institutoActual.nombre"
+        [localidad]="institutoActual.localidad"
+        [logo]="institutoActual.logo">
+      </app-instituto>
+    
+      <div class="mt-3">
+        @if (getIndiceActual() > 0) {
+          <button class="btn btn-secondary" (click)="anteriorInstituto()">← Anterior</button>
+        } 
+        @if (getIndiceActual() < institutos.length - 1) {
+          <button class="btn btn-secondary" (click)="siguienteInstituto()">Siguiente →</button>
+        }
+      </div>
+    </div>
+    
+    <br>
+    <div>
+      <small>Instituto {{ indiceActual + 1 }} de {{ institutos.length }}</small>
+    </div>
+  } @else {
+    <div class="alert alert-warning">No hay institutos para mostrar</div>
+  }
+  
+  <br>
+  <div>
+    <small>Institutos en pila: {{ pila.length }}</small>
+    @if (pila.length > 0) {
+      <small> - Último: {{ pila[pila.length - 1].nombre }}</small>
+    }
+  </div>
+  <button class="btn btn-danger" (click)="eliminarInstitutoActual()" [disabled]="institutos.length === 0">❌ Eliminar instituto</button>
+  <button class="btn btn-success" (click)="insertarInstitutoPila()" [disabled]="pila.length === 0">✅ Insertar instituto</button>
+</div>
