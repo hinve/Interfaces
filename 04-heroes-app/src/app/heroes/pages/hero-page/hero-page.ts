@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { delay, switchMap } from 'rxjs';
 import { HeroInterface } from '../../interfaces/hero-interface';
+
 
 @Component({
   selector: 'app-hero-page',
@@ -23,6 +24,7 @@ export class HeroPageComponent {
   ngOnInit(): void {
     this.activatedRoute.params
       .pipe(
+        //delay(5000),
         switchMap(({ id }) => {
           return this.heroesService.getHeroById(id);
         })
@@ -33,5 +35,9 @@ export class HeroPageComponent {
         console.log(hero);
         return;
       });
+    }
+    goBack(): void {
+      this.router.navigate(['/heroes/list']);
+    }
   }
-}
+  
