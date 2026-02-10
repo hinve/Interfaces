@@ -1,6 +1,5 @@
 <h1>
-    Editar / Añadir héroe
-    <small>Superman</small>
+    {{ currentHero.id ? 'Editar héroe' : 'Nuevo héroe' }}
 </h1>
 
 <mat-divider class="mb-2"></mat-divider>
@@ -9,12 +8,13 @@
     <div class="col-12 sm:col-6">
         <mat-card>
             <mat-card-content>
-                <div class="grid">
+                <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
                     <mat-form-field class="col-12 sm:col-6">
                         <mat-label>Super heroe</mat-label>
                         <input type="text"
                             matInput
                             required
+                            formControlName="superhero"
                         />
                     </mat-form-field>
                     <mat-form-field class="col-12 sm:col-6">
@@ -22,6 +22,7 @@
                         <input type="text"
                             matInput
                             required
+                            formControlName="alter_ego"
                         />
                     </mat-form-field>
                     <mat-form-field class="col-12">
@@ -29,6 +30,7 @@
                         <input type="text"
                             matInput
                             required
+                            formControlName="first_appearance"
                         />
                     </mat-form-field>
                     <mat-form-field class="col-12">
@@ -36,24 +38,47 @@
                         <input type="text"
                             matInput
                             required
+                            formControlName="characters"
                         />
                     </mat-form-field>
                     <mat-form-field class="col-12">
                         <mat-label>Creador</mat-label>
-                        <mat-select required>
+                        <mat-select required
+                            formControlName="publisher"
+                        >
                             @for (publisher of publishers; track publisher.id) {
-                                <mat-option value="publisher.id">
+                                <mat-option [value]="publisher.id">
                                     {{ publisher.desc }}
                                 </mat-option>
                             }
                         </mat-select>
                     </mat-form-field>
-                </div>
 
-                <div class="flex justify-content-between">
-                    <button matButton="elevated" color="warn">Borrar</button>
-                    <button matButton="filled" color="primary">Guardar</button>
-                </div>
+                    <mat-form-field class="col-12">
+                        <mat-label>Imagen alternativa</mat-label>
+                        <input type="text"
+                            matInput
+                            formControlName="alt_img"
+                        />
+                    </mat-form-field>
+                    <div class="col-12 flex justify-content-between gap-2 mt-3">
+                        @if (currentHero.id) {
+                            <button
+                                type="button"
+                                matButton="elevated"
+                                color="warn"
+                                (click)="onDeleteHero()"
+                            >Borrar</button>
+                        }
+                        <span></span>
+                        <button
+                            type="submit"
+                            matButton="filled"
+                            color="primary"
+                        >Guardar</button>
+                    </div>
+                </form>
+
 
             </mat-card-content>
         </mat-card>
@@ -61,7 +86,10 @@
 
     <div class="col-12 sm:col-6">
         <mat-card>
-            <img src="" alt="imagen del heroe" mat-card-image>
+            <img [src]="currentHero | heroImage" alt="imagen del heroe" mat-card-image>
         </mat-card>
     </div>
+    <pre>
+        {{ currentHero | json }}
+    </pre>
 </div>
